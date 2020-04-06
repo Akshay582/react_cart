@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 
 class CartItem extends Component {
+    constructor() {
+        super();
+        this.state = {
+            price: '9,999',
+            title: 'Smartphone',
+            qty: 2
+        }
+    }
+    increaseQuantity = () => {
+        console.log(this.state);
+    }
     render() {
+        const {price, title, qty} = this.state;
         return (
             <div className="card mb-3" style={{maxWidth: 540}}>
                 <div className="row no-gutters">
@@ -10,11 +22,17 @@ class CartItem extends Component {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h3 className="card-title">Phone</h3>
-                            <div className="card-text">Rs 999</div>
-                            <div className="card-text">Qty: 1</div>
+                            <h3 className="card-title">{title}</h3>
+                            <div className="card-text">Rs {price}</div>
+                            <div className="card-text"   
+                            style={{ marginBottom: 15 }}>Qty: {qty}</div>
                             <div>
                                 {/* {Button} */}
+                                <img alt="increase" style={styles.icon} src="https://image.flaticon.com/icons/svg/1828/1828926.svg" 
+                                onClick={this.increaseQuantity}/>
+                                <img alt="decrease" style={styles.icon}src="https://image.flaticon.com/icons/svg/1828/1828906.svg" />
+                                <img alt="delete" style={styles.icon} 
+                                src="https://image.flaticon.com/icons/svg/1828/1828843.svg" />
                             </div>
                         </div>
                     </div>
@@ -26,10 +44,15 @@ class CartItem extends Component {
 
 const styles = {
     image: {
-        height: 155,
+        height: 185,
         width: 170,
         borderRadius: 4,
         backgroundColor: '#708090'
+    },
+    icon:{
+        height: 25,
+        width: 25,
+        marginRight: 10
     }
 }
 
