@@ -1,13 +1,17 @@
 import React from 'react';
 import CartItem from './CartItem';
 
-function App() {
-  return (
-    <div className="Cart">
-      <h1>Cart</h1>
-      <CartItem />
-    </div>
-  );
+class Cart extends React.Component {
+  render() {
+    return (
+      <div>
+        <CartItem />
+        <CartItem />
+        <CartItem />
+      </div>
+    )
+  }
 }
 
-export default App;
+
+export default Cart;
