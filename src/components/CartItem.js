@@ -5,12 +5,25 @@ class CartItem extends Component {
         super();
         this.state = {
             price: '9,999',
-            title: 'Smartphone',
+            title: 'Mobile Phone',
             qty: 2
         }
     }
     increaseQuantity = () => {
-        console.log(this.state);
+        this.setState((prevState) =>{
+            return{
+                qty: prevState.qty + 1
+            }
+        });
+    }
+    decreaseQuantity = () => {
+        this.setState((prevState) => {
+            if(prevState.qty > 1){
+                return{
+                    qty: prevState.qty - 1
+                }
+            }
+        });
     }
     render() {
         const {price, title, qty} = this.state;
@@ -30,7 +43,8 @@ class CartItem extends Component {
                                 {/* {Button} */}
                                 <img alt="increase" style={styles.icon} src="https://image.flaticon.com/icons/svg/1828/1828926.svg" 
                                 onClick={this.increaseQuantity}/>
-                                <img alt="decrease" style={styles.icon}src="https://image.flaticon.com/icons/svg/1828/1828906.svg" />
+                                <img alt="decrease" style={styles.icon}src="https://image.flaticon.com/icons/svg/1828/1828906.svg"
+                                onClick={this.decreaseQuantity} />
                                 <img alt="delete" style={styles.icon} 
                                 src="https://image.flaticon.com/icons/svg/1828/1828843.svg" />
                             </div>
